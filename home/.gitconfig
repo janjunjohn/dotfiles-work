@@ -1,0 +1,10 @@
+[push]
+	default = current
+
+# ⚠️ 会社PCでは「会社のID」を設定すること（個人のメールを使わない）
+#    bootstrap 後に下記を実行、または name/email を直接書き換える:
+#      git config --global user.name  "Your Name"
+#      git config --global user.email "you@company.example"
+[user]
+	name = CHANGE_ME
+	email = CHANGE_ME@company.example

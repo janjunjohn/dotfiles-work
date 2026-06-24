@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Karabiner rolling auto-backups
+config/karabiner/automatic_backups/
+
+# secrets — never commit（会社PCでも個人情報・鍵は入れない）
+*.pem
+*.key
+.env
+.netrc
+id_*
