@@ -30,9 +30,10 @@ brew "tcl-tk"
 # brew "postgresql@17"
 # brew "mariadb"
 
-# --- エディタ / ターミナル ---
+# --- エディタ / ターミナル / ランチャー ---
 cask "iterm2"
 cask "visual-studio-code"
+cask "raycast"
 
 # --- フォント（p10k / ターミナルのグリフに必須） ---
 cask "font-sauce-code-pro-nerd-font"
