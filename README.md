@@ -28,13 +28,6 @@ Brewfile  CLI開発ツール + フォント + iTerm2/VSCode + 拡張
 scripts/  install.sh link.sh macos.sh
 ```
 
-## 個人用との違い（=意図的に外したもの）
-
-- 個人/業務アプリ: Slack・Teams・Zoom（会社ITが配布）、Anki・Discord・LINE・Surfshark 等
-- iStat Menus とそのライセンス、Raycast の個人エクスポート
-- 個人の iTerm2 plist（OpenAI/個人パス込み）→ カラースキームのみ持ち込み
-- SSH鍵 / .netrc / docker認証 などの秘密情報
-
 ## 会社PCならではの注意
 
 - **git の ID は会社用に設定**すること（`~/.gitconfig` の `CHANGE_ME`、または
