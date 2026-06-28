@@ -54,6 +54,16 @@ else
   echo "    zsh-autosuggestions already present."
 fi
 
+# tmux plugin manager (tpm). Cloned OUTSIDE the dotfiles repo so plugin clones
+# aren't committed; tmux.conf points TMUX_PLUGIN_MANAGER_PATH at ~/.tmux/plugins.
+# After this, open tmux and press `prefix + I` to install the declared plugins.
+echo "==> [install] tmux plugin manager (tpm)"
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+  git clone --depth=1 https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+else
+  echo "    tpm already present."
+fi
+
 # fzf shell keybindings/completion (binary installed via Brewfile).
 if command -v fzf >/dev/null 2>&1 && [ ! -f "$HOME/.fzf.zsh" ]; then
   echo "==> [install] fzf shell integration"

@@ -1,2 +1,2 @@
-require("jun.core")
-require("jun.lazy")
+-- Entry point. Bootstraps lazy.nvim, LazyVim and the plugins under lua/plugins.
+require("config.lazy")

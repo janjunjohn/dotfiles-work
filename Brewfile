@@ -16,6 +16,14 @@ brew "fzf"
 brew "autojump"
 # IME 切替（nvim/vim の自動 IME 切替に使用）
 brew "daipeihust/tap/im-select"
+# 検索・ファイル探索
+brew "ripgrep"
+brew "fd"
+# Git 補助
+brew "lazygit"
+brew "git-delta"
+# リモートシェル
+brew "mosh"
 
 # --- 言語バージョン管理（必要なものだけ残す） ---
 brew "pyenv"
@@ -34,6 +42,7 @@ brew "tcl-tk"
 cask "iterm2"
 cask "visual-studio-code"
 cask "raycast"
+cask "claude-code"
 
 # --- フォント（p10k / ターミナルのグリフに必須） ---
 cask "font-sauce-code-pro-nerd-font"
