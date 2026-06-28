@@ -43,6 +43,13 @@ link "$DOTFILES/config/tmux"      "$HOME/.config/tmux"
 link "$DOTFILES/config/karabiner" "$HOME/.config/karabiner"
 link "$DOTFILES/config/git"       "$HOME/.config/git"
 
+echo "==> [link] LaunchAgents (no-sleep + tmux auto-start)"
+link "$DOTFILES/config/launchd/com.jun.caffeinate.plist" "$HOME/Library/LaunchAgents/com.jun.caffeinate.plist"
+link "$DOTFILES/config/launchd/com.jun.tmux-dev.plist"   "$HOME/Library/LaunchAgents/com.jun.tmux-dev.plist"
+
+echo "==> [link] Claude Code settings"
+link "$DOTFILES/config/claude/settings.json" "$HOME/.claude/settings.json"
+
 echo "==> [link] VSCode user settings"
 VSC="$HOME/Library/Application Support/Code/User"
 link "$DOTFILES/vscode/settings.json"    "$VSC/settings.json"
