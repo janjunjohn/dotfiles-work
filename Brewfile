@@ -26,6 +26,7 @@ brew "fd"
 # Git 補助
 brew "lazygit"
 brew "git-delta"
+brew "gh"
 # リモートシェル
 brew "mosh"
 
