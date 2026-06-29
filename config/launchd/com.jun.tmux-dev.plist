@@ -11,7 +11,7 @@
   <array>
     <string>/bin/sh</string>
     <string>-c</string>
-    <string>/opt/homebrew/bin/tmux has-session -t dev 2>/dev/null || /opt/homebrew/bin/tmux new-session -d -s dev</string>
+    <string>export PATH="$HOME/.local/bin:$PATH"; /opt/homebrew/bin/tmux has-session -t dev 2>/dev/null || /opt/homebrew/bin/tmux new-session -d -s dev</string>
   </array>
   <key>RunAtLoad</key>
   <true/>
