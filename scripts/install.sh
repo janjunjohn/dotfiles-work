@@ -30,6 +30,16 @@ brew bundle --file="$DOTFILES/Brewfile" || {
   brew bundle --file="$DOTFILES/Brewfile"
 }
 
+# Claude Code CLI — native installer (~/.local/bin/claude). We deliberately do NOT
+# manage it via brew cask; the native build self-updates. Idempotent: only runs the
+# installer when claude is not already on PATH and ~/.local/bin/claude is absent.
+echo "==> [install] Claude Code (native installer)"
+if command -v claude >/dev/null 2>&1 || [ -x "$HOME/.local/bin/claude" ]; then
+  echo "    claude already installed."
+else
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
 echo "==> [install] oh-my-zsh"
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
   RUNZSH=no KEEP_ZSHRC=yes CHSH=no \

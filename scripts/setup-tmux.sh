@@ -84,8 +84,12 @@ TPM_INSTALL="$HOME/.tmux/plugins/tpm/bin/install_plugins"
 if [ -x "$TPM_INSTALL" ]; then
   # TMUX 環境変数がない場合 (tmux セッション外) は tpm スクリプトを直接呼ぶ
   if [ -z "${TMUX:-}" ]; then
-    # tpm の install_plugins は tmux サーバーが起動している必要がある
-    if tmux start-server \; run-shell "$TPM_INSTALL" 2>/dev/null; then
+    # tpm の install_plugins は tmux サーバーが起動している必要がある。
+    # ただし `tmux start-server` 単体では設定ファイルを source しないため、
+    # TMUX_PLUGIN_MANAGER_PATH が未定義のまま install_plugins が走り
+    # `unknown variable: TMUX_PLUGIN_MANAGER_PATH` で失敗する。
+    # → start-server の直後に明示 source-file してから install_plugins を呼ぶ。
+    if tmux start-server \; source-file "$HOME/.config/tmux/tmux.conf" \; run-shell "$TPM_INSTALL" 2>/dev/null; then
       echo "    プラグインをインストールしました。"
     else
       echo "    !! tpm 自動インストールに失敗しました。"

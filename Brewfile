@@ -7,15 +7,19 @@
 #
 # 不要な行はコメントアウトして調整してください。
 
-tap "daipeihust/tap"
+# 信頼できないサードパーティ tap は新しい Homebrew で "untrusted" 扱いとなり
+# bundle が止まるため無効化（必要なら `brew trust daipeihust/tap` の上で再有効化）。
+# tap "daipeihust/tap"
 
 # --- CLI / 開発ツール ---
 brew "neovim"
 brew "tmux"
 brew "fzf"
 brew "autojump"
-# IME 切替（nvim/vim の自動 IME 切替に使用）
-brew "daipeihust/tap/im-select"
+# IME 切替（nvim/vim の自動 IME 切替に使用）。daipeihust/tap 無効化に伴いコメント化。
+# nvim の IME ガード（config/nvim/lua/config/autocmds.lua）は im-select 不在でも
+# `executable("im-select")` で無害にスキップされる。必要時は tap を信頼の上で再有効化。
+# brew "daipeihust/tap/im-select"
 # 検索・ファイル探索
 brew "ripgrep"
 brew "fd"
@@ -42,7 +46,11 @@ brew "tcl-tk"
 cask "iterm2"
 cask "visual-studio-code"
 cask "raycast"
-cask "claude-code"
+# キー配列管理（config/karabiner/ を読み込む）
+cask "karabiner-elements"
+# Claude Code はネイティブインストーラ版（~/.local/bin/claude）に一本化。
+# brew cask では管理しない（scripts/install.sh が curl で冪等導入する）。
+# cask "claude-code"
 
 # --- フォント（p10k / ターミナルのグリフに必須） ---
 cask "font-sauce-code-pro-nerd-font"
@@ -53,8 +61,10 @@ cask "font-meslo-lg-nerd-font"
 vscode "asvetliakov.vscode-neovim"
 vscode "bierner.markdown-preview-github-styles"
 vscode "eamodio.gitlens"
-vscode "github.copilot"
-vscode "github.copilot-chat"
+# Copilot は VSCode 1.126+ に同梱され、拡張版と衝突するため無効化。
+# 会社方針で利用可なら同梱版をそのまま使用（個別インストール不要）。
+# vscode "github.copilot"
+# vscode "github.copilot-chat"
 vscode "humao.rest-client"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-python.debugpy"

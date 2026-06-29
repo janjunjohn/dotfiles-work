@@ -34,8 +34,16 @@ link() {
 echo "==> [link] home dotfiles"
 link "$DOTFILES/home/.zshrc"     "$HOME/.zshrc"
 link "$DOTFILES/home/.p10k.zsh"  "$HOME/.p10k.zsh"
-link "$DOTFILES/home/.tmux.conf" "$HOME/.tmux.conf"
 link "$DOTFILES/home/.gitconfig" "$HOME/.gitconfig"
+
+# tmux 3.x auto-loads ~/.config/tmux/tmux.conf (XDG). An additional ~/.tmux.conf
+# that sources it makes the config run TWICE (duplicate binds / tpm init). So we
+# intentionally do NOT create ~/.tmux.conf, and remove a stale one left by older
+# setups so the next tmux start is a single, clean load.
+if [ -e "$HOME/.tmux.conf" ] || [ -L "$HOME/.tmux.conf" ]; then
+  echo "    rm   stale ~/.tmux.conf (tmux reads ~/.config/tmux/tmux.conf directly)"
+  rm -f "$HOME/.tmux.conf"
+fi
 
 echo "==> [link] ~/.config apps"
 link "$DOTFILES/config/nvim"      "$HOME/.config/nvim"

@@ -20,8 +20,12 @@ defaults write -g NSUserKeyEquivalents -dict-add "Show Next Tab"     '^n'
 defaults write -g NSUserKeyEquivalents -dict-add "Show Previous Tab" '^p'
 
 echo "==> [macos] Safari タブグループ切替ショートカット"
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Go to Next Tab Group"     '@^j'
-defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Go to Previous Tab Group" '@^k'
+# Safari の defaults はフルディスクアクセス権限が無いと失敗する。bootstrap 全体を
+# 止めないよう `|| 警告` でガード（後で権限付与のうえ macos.sh を再実行すればよい）。
+{
+  defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Go to Next Tab Group"     '@^j' &&
+  defaults write com.apple.Safari NSUserKeyEquivalents -dict-add "Go to Previous Tab Group" '@^k'
+} || echo "    !! Safari の設定をスキップ（フルディスクアクセス権限が必要。System Settings → Privacy & Security → Full Disk Access で許可後に再実行）"
 
 # 会社で MDM がトラックパッド/Dock 等を管理している場合があるため、
 # それらは意図的に含めていない。必要なら個人 dotfiles の macos.sh を参照して追記。
