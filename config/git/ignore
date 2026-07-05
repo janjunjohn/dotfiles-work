@@ -282,3 +282,4 @@ build-iPhoneSimulator/
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,python,visualstudiocode,ruby
+**/.claude/settings.local.json
