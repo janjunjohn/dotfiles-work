@@ -7,6 +7,11 @@ local opt = vim.opt
 opt.number = true
 opt.relativenumber = false
 
+-- never conceal markdown syntax (LazyVim defaults to conceallevel=2, which hides
+-- ``` fences etc. and re-reveals them on the cursor line, causing the text to
+-- shift as you move around). 0 keeps everything shown as raw text.
+opt.conceallevel = 0
+
 -- 4-space indentation (LazyVim defaults to 2)
 opt.shiftwidth = 4
 opt.tabstop = 4
